@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-function PrimaryButton({ onPress }) {
+function SecondaryButton({ onPress }) {
 
   return (
     <View style={styles.buttonOuterContainer}>
@@ -13,13 +13,13 @@ function PrimaryButton({ onPress }) {
         onPress={ onPress } 
         android_ripple={ {color: '#ffffff' }}        
       >
-        <Text style={styles.buttonText}>See more</Text>
+        <Text style={styles.buttonText}>Go to IsoScreen</Text>
       </Pressable>
     </View>
   );
 }
 
-export default PrimaryButton;
+export default SecondaryButton;
 
 const styles = StyleSheet.create({
 

@@ -1,13 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import BeerHome from './screens/BeerHome';
-import BeerScreen from './screens/BeerScreen';
-import Profile from './screens/Profile';
-import { Ionicons } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator();
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 // Centralisation de l'application
 export default function App() {
@@ -17,33 +12,7 @@ export default function App() {
       <StatusBar style="dark" />
 
       <NavigationContainer style={styles.footer}>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ color, size }) => {
-              let iconName;
-
-              if (route.name === 'Home') {
-                iconName = 'ios-home-outline';
-              }
-
-              if (route.name === 'Beer') {
-                iconName = 'ios-beer-outline';
-              }
-
-              if (route.name === 'Profile') {
-                iconName = 'ios-person-outline';              
-              }
-
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: 'orange',
-            tabBarInactiveTintColor: 'gray',
-          })}
-        > 
-            <Tab.Screen name="Beer" component={BeerScreen} />
-            <Tab.Screen name="Home" component={BeerHome} />
-            <Tab.Screen name="Profile" component={Profile} />  
-        </Tab.Navigator>
+        <BottomTabNavigator />
       </NavigationContainer>
     </>
   );

@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native' ;
 
-function IsoScreen({  }) {
+function IsoScreen({}) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>       
