@@ -1,10 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-function PrimaryButton({ children }) {
-
-  function pressHandler() {
-    console.log('Pressed !');
-  }
+function PrimaryButton({ onPress }) {
 
   return (
     <View style={styles.buttonOuterContainer}>
@@ -14,10 +10,10 @@ function PrimaryButton({ children }) {
           ? [styles.buttonInnerContainer, styles.pressed] 
           : styles.buttonInnerContainer
         } 
-        onPress={ pressHandler } 
+        onPress={ onPress } 
         android_ripple={ {color: '#640233' }}
       >
-        <Text style={styles.buttonText}>{ children }</Text>
+        <Text style={styles.buttonText}>Go to Beer Screen</Text>
       </Pressable>
     </View>
   );
@@ -29,19 +25,19 @@ const styles = StyleSheet.create({
 
   buttonOuterContainer: {
     borderRadius: 28,
-    margin: 4,
+    margin: 3,
     overflow: 'hidden',
   },
 
   buttonInnerContainer: {
-    backgroundColor: '#72063c',    
+    backgroundColor: '#fff',    
     paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 5,
     elevation: 2,
   },
 
   buttonText: {
-    color: '#fff',
+    color: '#660233',
     textAlign: 'center',
   },
 
