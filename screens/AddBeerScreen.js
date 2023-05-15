@@ -15,7 +15,6 @@ function AddBeerScreen(props) {
     // setNewBeer('');
   }
 
-  
 
   return (
     <View style={styles.container}>

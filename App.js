@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
+import FavoritesContextProvider from './store/context/favorites-context';
 
 // Centralisation de l'application
 export default function App() {
@@ -11,9 +12,11 @@ export default function App() {
     <>
       <StatusBar style="dark" />
 
-      <NavigationContainer style={styles.footer}>
-        <BottomTabNavigator />
-      </NavigationContainer>
+      <FavoritesContextProvider>
+        <NavigationContainer style={styles.footer}>
+          <BottomTabNavigator />
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
