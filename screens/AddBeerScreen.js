@@ -1,7 +1,17 @@
 import { Text, View, StyleSheet, Pressable, Modal, Image, TextInput, Button } from 'react-native' ;
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import { FavoritesContext } from '../store/context/favorites-context';
 
 function AddBeerScreen(props) {
+  const favoriteMealCtx = useContext(FavoritesContext);
+
+  console.log(favoriteMealCtx);
+
+  // const mealId = 1;
+
+  // const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
+
+  // console.log(mealIsFavorite);
 
   const [newBeer, setNewBeer] = useState('');
   
@@ -10,7 +20,14 @@ function AddBeerScreen(props) {
   }
 
   function addGoalHandler() {
-    console.log(newBeer);
+    console.log('Pressed');
+
+    // if(mealIsFavorite) {
+    //   favoriteMealCtx.removeFavorite(mealId);
+    // } else {
+    //   favoriteMealCtx.addFavorite(mealId);
+    // }
+
     // props.onAddGoal(newBeer);
     // setNewBeer('');
   }
