@@ -1,72 +1,33 @@
 import { Text, View, StyleSheet, Button, Pressable, FlatList, SafeAreaView  } from 'react-native' ;
+import React, { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AddBeerButton from '../components/AddBeerButton';
 import { ScrollView } from 'react-native-gesture-handler';
-
-const persons = [
-  {
-	id: "1",
-	name: "Earnest Green",
-  },
-  {
-	id: "2",
-	name: "Winston Orn",
-  },
-  {
-	id: "3",
-	name: "Carlton Collins",
-  },
-  {
-	id: "4",
-	name: "Malcolm Labadie",
-  },
-  {
-	id: "5",
-	name: "Michelle Dare",
-  },
-  {
-	id: "6",
-	name: "Carlton Zieme",
-  },
-  {
-	id: "7",
-	name: "Jessie Dickinson",
-  },
-  {
-	id: "8",
-	name: "Julian Gulgowski",
-  },
-  {
-	id: "9",
-	name: "Ellen Veum",
-  },
-  {
-	id: "10",
-	name: "Lorena Rice",
-  },
-  {
-	id: "11",
-	name: "Carlton Zieme",
-  },
-  {
-	id: "12",
-	name: "Jessie Dickinson",
-  },
-  {
-	id: "13",
-	name: "Julian Gulgowski",
-  },
-  {
-	id: "14",
-	name: "Ellen Veum",
-  },
-  {
-	id: "15",
-	name: "Lorena Rice",
-  },
-];
+import axios from "axios"
 
 function BeerListScreen({ navigation }) {
+  const [data, setData] = useState([]);
+
+  // TODO: find a way to refresh data when switch to tab
+  // API Fetch data
+  const fetchData = () => {
+    const baseURL = "http://192.168.1.50:3000";
+    axios.get(`${baseURL}/users`)
+
+    .then(response => {
+      console.log(response.data)     
+      setData(response.data) 
+    })       
+
+    .catch(error => {
+      console.log(error.response)
+    })
+  }
+   useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Front
   return (
     <View style={styles.container}>
       <View style={styles.header}>       
@@ -74,7 +35,7 @@ function BeerListScreen({ navigation }) {
         
         <SafeAreaView style={styles.containerAreaView}>
           <FlatList 
-            data={persons}
+            data={data}
             renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
             keyExtractor={(item) => item.id}
           />

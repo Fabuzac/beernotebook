@@ -6,7 +6,7 @@ import AddBeerButton from '../components/AddBeerButton';
 
 // Page home de l'application
 function Home({ navigation }) {
-
+  
   return (
     
     <View style={styles.container}>
