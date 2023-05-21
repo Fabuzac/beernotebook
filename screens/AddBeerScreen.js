@@ -1,17 +1,8 @@
 import { Text, View, StyleSheet, Pressable, Modal, Image, TextInput, Button } from 'react-native' ;
-import {useState, useContext} from 'react';
-import { FavoritesContext } from '../store/context/favorites-context';
+import {useState, useContext, useEffect} from 'react';
+import axios from "axios"
 
 function AddBeerScreen(props) {
-  const favoriteMealCtx = useContext(FavoritesContext);
-
-  console.log(favoriteMealCtx);
-
-  // const mealId = 1;
-
-  // const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
-
-  // console.log(mealIsFavorite);
 
   const [newBeer, setNewBeer] = useState('');
   
@@ -21,17 +12,25 @@ function AddBeerScreen(props) {
 
   function addGoalHandler() {
     console.log('Pressed');
-
-    // if(mealIsFavorite) {
-    //   favoriteMealCtx.removeFavorite(mealId);
-    // } else {
-    //   favoriteMealCtx.addFavorite(mealId);
-    // }
-
-    // props.onAddGoal(newBeer);
-    // setNewBeer('');
+    fetchData();
   }
 
+  const fetchData = () => {
+    
+    const beerData = {
+      'name' : newBeer
+    }
+
+    const baseURL = "http://192.168.1.50:3000";
+    axios.post(`${baseURL}/users`, beerData)
+
+    .then(response => {    
+      console.log(response.status, response.data)
+    })       
+    .catch(error => {
+      console.log(error.response)
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -68,9 +67,6 @@ function AddBeerScreen(props) {
               );
             })
           } */}
-
-          <Text>{newBeer}</Text>
-
       </View>
     </View>
   );
