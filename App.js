@@ -1,9 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
 import BottomTabNavigator from './navigation/BottomTabNavigator';
-import FavoritesContextProvider from './store/context/favorites-context';
 
 // Centralisation de l'application
 export default function App() {
@@ -11,12 +9,10 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-
-      <FavoritesContextProvider>
+      
         <NavigationContainer style={styles.footer}>
           <BottomTabNavigator />
         </NavigationContainer>
-      </FavoritesContextProvider>
     </>
   );
 }
