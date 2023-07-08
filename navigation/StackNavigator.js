@@ -9,6 +9,7 @@ import BeerListScreen from "../screens/BeerListScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import IsoScreen from "../screens/IsoScreen";
 import AddBeerScreen from "../screens/AddBeerScreen";
+import CameraScreen from "../screens/CameraScreen";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,9 @@ function HomeStack() {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="BeerListScreen" component={BeerListScreen} />
       <Stack.Screen name="IsoScreen" component={IsoScreen} />
+
+      <Stack.Screen name="AddBeerScreen" component={AddBeerScreen} />
+      <Stack.Screen name="CameraScreen" component={CameraScreen} />
     </Stack.Navigator>
   );
 };
@@ -29,7 +33,9 @@ function ProfileStack() {
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       <Stack.Screen name="IsoScreen" component={IsoScreen} />
+      
       <Stack.Screen name="AddBeerScreen" component={AddBeerScreen} />
+      <Stack.Screen name="CameraScreen" component={CameraScreen} />
     </Stack.Navigator>
   );
 };

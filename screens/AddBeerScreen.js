@@ -1,11 +1,17 @@
 import { Text, View, StyleSheet, Pressable, Modal, Image, TextInput, Button } from 'react-native' ;
 import {useState, useContext, useEffect} from 'react';
 import axios from "axios"
+import BarcodeScannerButton from '../components/BarcodeScannerButton';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 
 function AddBeerScreen(props) {
 
   const [newBeer, setNewBeer] = useState('');
   
+  function camera() {
+    console.log("Camera pressed");   
+  }
+
   function goalInputHandler(enteredText) {
     setNewBeer(enteredText);
   }
@@ -57,6 +63,14 @@ function AddBeerScreen(props) {
               </View>
             </View>
           </View>
+
+          <BarcodeScannerButton onPress={() => navigation.navigate("CameraScreen")}>         
+          </BarcodeScannerButton>
+
+          {/* Added permissions */}
+          {/* <uses-permission android:name="android.permission.CAMERA" /> */}
+
+
 
           {/* { 
             newBeer.map((beer) => {
